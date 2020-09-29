@@ -12,11 +12,14 @@ class Token(models.Model):
     """
     The default authorization token model.
     """
+    # 使用 key 作为主键，避免了 id 自增，可以随意删除
     key = models.CharField(_("Key"), max_length=40, primary_key=True)
+    # 关联帐号
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL, related_name='auth_token',
         on_delete=models.CASCADE, verbose_name=_("User")
     )
+    # 创建时间
     created = models.DateTimeField(_("Created"), auto_now_add=True)
 
     class Meta:

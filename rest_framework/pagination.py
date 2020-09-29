@@ -134,6 +134,7 @@ PAGE_BREAK = PageLink(url=None, number=None, is_active=False, is_break=True)
 
 
 class BasePagination(object):
+    """基本分页对象"""
     display_page_controls = False
 
     def paginate_queryset(self, queryset, request, view=None):  # pragma: no cover
@@ -216,6 +217,7 @@ class PageNumberPagination(BasePagination):
         return list(self.page)
 
     def get_paginated_response(self, data):
+        """获取分页响应"""
         return Response(OrderedDict([
             ('count', self.page.paginator.count),
             ('next', self.get_next_link()),

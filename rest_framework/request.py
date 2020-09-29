@@ -162,6 +162,7 @@ class Request(object):
 
         self._request = request
         self.parsers = parsers or ()
+        # 认证对象集合
         self.authenticators = authenticators or ()
         self.negotiator = negotiator or self._default_negotiator()
         self.parser_context = parser_context
